@@ -1,0 +1,37 @@
+# BOB - Pull Request Orchestrator
+# Core dependencies
+
+# GitLab Integration
+python-gitlab==4.4.0
+
+# Slack Integration
+slack-sdk==3.27.1
+
+# Code Analysis Tools
+pylint==3.1.0
+flake8==7.0.0
+bandit==1.7.8
+semgrep==1.63.0
+
+# Configuration
+pyyaml==6.0.1
+python-dotenv==1.0.1
+
+# Reporting
+jinja2==3.1.3
+markdown==3.5.2
+
+# Utilities
+requests==2.31.0
+gitpython==3.1.42
+
+# Testing
+pytest==8.1.1
+pytest-cov==4.1.0
+pytest-mock==3.12.0
+
+# Type checking
+mypy==1.9.0
+
+# Date/Time
+python-dateutil==2.9.0

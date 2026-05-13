@@ -1,0 +1,251 @@
+# BOB - IBM Compliance Policies Configuration
+# Configurações de políticas de compliance da IBM
+
+security:
+  # Bloquear PR se credenciais forem encontradas
+  block_on_credentials: true
+  
+  # Gerenciadores de secrets aprovados
+  allowed_secrets_manager:
+    - IBM Cloud Secrets Manager
+    - HashiCorp Vault
+    - AWS Secrets Manager
+  
+  # Padrões proibidos (regex)
+  forbidden_patterns:
+    - pattern: '(?i)(password|passwd|pwd)\s*=\s*[''"][^''"]+[''"]'
+      message: "Senha hardcoded detectada"
+      severity: CRITICAL
+    
+    - pattern: '(?i)(api[_-]?key|apikey)\s*=\s*[''"][^''"]+[''"]'
+      message: "API Key hardcoded detectada"
+      severity: CRITICAL
+    
+    - pattern: '(?i)(secret|token)\s*=\s*[''"][^''"]+[''"]'
+      message: "Secret/Token hardcoded detectado"
+      severity: CRITICAL
+    
+    - pattern: 'AKIA[0-9A-Z]{16}'
+      message: "AWS Access Key ID detectada"
+      severity: CRITICAL
+    
+    - pattern: '(?i)(bearer|authorization):\s*[''"][^''"]+[''"]'
+      message: "Token de autorização hardcoded"
+      severity: CRITICAL
+    
+    - pattern: 'mongodb(\+srv)?://[^/\s]+'
+      message: "String de conexão MongoDB exposta"
+      severity: CRITICAL
+    
+    - pattern: 'postgres://[^/\s]+'
+      message: "String de conexão PostgreSQL exposta"
+      severity: CRITICAL
+
+architecture:
+  # Configurações Swift/iOS
+  swift:
+    enforce_viper: true
+    max_file_lines: 400
+    max_function_lines: 50
+    max_class_lines: 350
+    require_protocols: true
+    patterns:
+      - VIPER
+      - MVVM
+  
+  # Configurações Java
+  java:
+    enforce_patterns: [MVC, MVVM, Clean Architecture]
+    max_class_lines: 500
+    max_method_lines: 30
+    require_interfaces: true
+    forbidden_patterns:
+      - God Class
+      - Singleton abuse
+  
+  # Configurações Python
+  python:
+    enforce_pep8: true
+    max_function_lines: 30
+    max_class_lines: 300
+    require_type_hints: true
+    require_docstrings: true
+  
+  # Configurações Java
+  java:
+    enforce_patterns: [MVC, MVVM, Clean Architecture]
+    max_class_lines: 500
+    max_method_lines: 30
+    require_interfaces: true
+    forbidden_patterns:
+      - God Class
+      - Singleton abuse
+  
+  # Configurações JavaScript/TypeScript/React
+  javascript:
+    max_component_lines: 300
+    max_function_lines: 25
+    require_proptypes: true
+    forbid_console_log: true
+    enforce_async_await: true
+    
+    # React específico
+    react:
+      max_component_lines: 300
+      require_keys_in_lists: true
+      enforce_hooks_rules: true
+    
+    # TypeScript específico
+    typescript:
+      strict_mode: true
+      no_any: true
+      require_return_types: true
+
+libraries:
+  # Modo whitelist (apenas bibliotecas aprovadas)
+  whitelist_only: false
+  
+  # Bibliotecas aprovadas por linguagem
+  approved_libraries:
+    python:
+      - requests
+      - flask
+      - django
+      - fastapi
+      - sqlalchemy
+      - pandas
+      - numpy
+      - pytest
+    
+    swift:
+      - Alamofire
+      - SwiftyJSON
+      - Kingfisher
+      - SnapKit
+      - RxSwift
+    
+    java:
+      - spring-boot
+      - spring-framework
+      - hibernate
+      - junit
+      - junit5
+      - mockito
+      - lombok
+      - slf4j
+      - logback
+    
+    javascript:
+      - react
+      - react-dom
+      - vue
+      - angular
+      - axios
+      - lodash
+      - moment
+      - date-fns
+      - jest
+      - testing-library
+      - typescript
+      - eslint
+      - prettier
+  
+  # Verificar vulnerabilidades conhecidas
+  check_vulnerabilities: true
+  min_severity: MEDIUM
+  
+  # Bibliotecas explicitamente proibidas
+  forbidden_libraries:
+    - eval
+    - exec
+    - pickle  # Python - inseguro
+    - yaml.load  # Python - usar yaml.safe_load
+
+code_quality:
+  # Complexidade ciclomática máxima
+  max_complexity: 10
+  
+  # Cobertura de testes mínima (%)
+  min_test_coverage: 80
+  
+  # Documentação obrigatória
+  require_documentation: true
+  
+  # Métricas de código
+  metrics:
+    max_parameters: 5
+    max_nested_blocks: 4
+    max_return_statements: 3
+  
+  # Nomenclatura
+  naming_conventions:
+    swift:
+      classes: PascalCase
+      functions: camelCase
+      variables: camelCase
+      constants: UPPER_SNAKE_CASE
+    
+    java:
+      classes: PascalCase
+      methods: camelCase
+      variables: camelCase
+      constants: UPPER_SNAKE_CASE
+    
+    python:
+      classes: PascalCase
+      functions: snake_case
+      variables: snake_case
+      constants: UPPER_SNAKE_CASE
+    
+    javascript:
+      classes: PascalCase
+      functions: camelCase
+      variables: camelCase
+      constants: UPPER_SNAKE_CASE
+
+git:
+  # Configurações de commit
+  commit_message:
+    min_length: 10
+    require_issue_reference: true
+    patterns:
+      - '^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+'
+  
+  # Configurações de branch
+  branch_naming:
+    patterns:
+      - '^(feature|bugfix|hotfix|release)/.+'
+  
+  # Tamanho máximo de PR
+  max_files_changed: 50
+  max_lines_changed: 1000
+
+notifications:
+  # Níveis de severidade para notificação
+  notify_on:
+    - CRITICAL
+    - HIGH
+    - MEDIUM
+  
+  # Mencionar automaticamente
+  auto_mention:
+    critical: true
+    high: true
+  
+  # Formato de mensagem
+  message_format: detailed  # detailed, summary, minimal
+
+reporting:
+  # Formato de saída
+  output_format: json  # json, yaml, markdown
+  
+  # Incluir sugestões de correção
+  include_suggestions: true
+  
+  # Incluir links para documentação
+  include_docs_links: true
+  
+  # Gerar relatório HTML
+  generate_html: true
+
+# Made with Bob

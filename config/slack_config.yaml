@@ -1,0 +1,115 @@
+# BOB - Slack Integration Configuration
+# Configurações de integração com Slack
+
+# Webhook URL (usar variável de ambiente SLACK_WEBHOOK_URL)
+webhook_url: ${SLACK_WEBHOOK_URL}
+
+# Token de autenticação (usar variável de ambiente SLACK_BOT_TOKEN)
+bot_token: ${SLACK_BOT_TOKEN}
+
+# Canal padrão para notificações
+default_channel: "#code-reviews"
+
+# Canais por tipo de notificação
+channels:
+  critical: "#alerts-critical"
+  security: "#security-alerts"
+  architecture: "#architecture-reviews"
+  general: "#code-reviews"
+
+# Configurações de mensagem
+message:
+  # Usar threads para respostas
+  use_threads: true
+  
+  # Mencionar usuários automaticamente
+  auto_mention: true
+  
+  # Incluir emoji no título
+  use_emoji: true
+  
+  # Formato de timestamp
+  timestamp_format: "%d/%m/%Y %H:%M:%S"
+  
+  # Limite de caracteres por mensagem
+  max_length: 4000
+
+# Mapeamento de usuários GitLab -> Slack
+user_mapping:
+  # Exemplo: gitlab_username: slack_user_id
+  # joao.silva: U01234ABCDE
+  # maria.santos: U56789FGHIJ
+  # Use o comando /bob map-user para adicionar mapeamentos
+
+# Emojis personalizados
+emojis:
+  bot: ":robot_face:"
+  critical: ":red_circle:"
+  warning: ":warning:"
+  info: ":information_source:"
+  success: ":white_check_mark:"
+  security: ":lock:"
+  architecture: ":building_construction:"
+  quality: ":bar_chart:"
+  suggestion: ":bulb:"
+
+# Templates de mensagem
+templates:
+  pr_blocked:
+    title: "🔴 Pull Request Bloqueado"
+    color: "#FF0000"
+  
+  pr_warning:
+    title: "⚠️ Pull Request com Avisos"
+    color: "#FFA500"
+  
+  pr_approved:
+    title: "✅ Pull Request Aprovado pelo BOB"
+    color: "#00FF00"
+  
+  security_alert:
+    title: "🔒 Alerta de Segurança Crítico"
+    color: "#8B0000"
+
+# Notificações por severidade
+notifications:
+  CRITICAL:
+    enabled: true
+    mention_developer: true
+    mention_reviewer: true
+    mention_channel: true
+    priority: high
+  
+  HIGH:
+    enabled: true
+    mention_developer: true
+    mention_reviewer: false
+    mention_channel: false
+    priority: medium
+  
+  MEDIUM:
+    enabled: true
+    mention_developer: false
+    mention_reviewer: false
+    mention_channel: false
+    priority: low
+  
+  LOW:
+    enabled: false
+    mention_developer: false
+    mention_reviewer: false
+    mention_channel: false
+    priority: low
+
+# Retry configuration
+retry:
+  max_attempts: 3
+  backoff_factor: 2
+  timeout: 30
+
+# Rate limiting
+rate_limit:
+  messages_per_minute: 20
+  burst_size: 5
+
+# Made with Bob

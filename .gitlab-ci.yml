@@ -1,0 +1,222 @@
+# BOB - Pull Request Orchestrator
+# GitLab CI/CD Pipeline Configuration
+
+stages:
+  - bob-analysis    # Análise automática do BOB
+  - test           # Testes unitários
+  - deploy         # Deploy (se aplicável)
+
+# Variáveis globais
+variables:
+  BOB_IMAGE: "python:3.11-slim"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Cache para dependências Python
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+# Job principal: Análise BOB em Pull Requests
+bob-pr-check:
+  stage: bob-analysis
+  image: ${BOB_IMAGE}
+  
+  # Executa apenas em merge requests
+  only:
+    - merge_requests
+  
+  # Variáveis de ambiente necessárias
+  variables:
+    GITLAB_TOKEN: ${CI_JOB_TOKEN}
+    SLACK_BOT_TOKEN: ${SLACK_BOT_TOKEN}
+    SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL}
+  
+  before_script:
+    # Instala dependências do sistema
+    - apt-get update && apt-get install -y git
+    
+    # Cria ambiente virtual
+    - python -m venv venv
+    - source venv/bin/activate
+    
+    # Instala dependências Python
+    - pip install --upgrade pip
+    - pip install -r bob-pr-orchestrator/requirements.txt
+    
+    # Configura Git
+    - git config --global user.email "bob@ibm.com"
+    - git config --global user.name "BOB Analyzer"
+  
+  script:
+    # Executa análise do BOB
+    - echo "🤖 BOB iniciando análise do Pull Request #${CI_MERGE_REQUEST_IID}..."
+    - cd bob-pr-orchestrator
+    - |
+      python -m bob.main \
+        --pr-id ${CI_MERGE_REQUEST_IID} \
+        --project-id ${CI_PROJECT_ID} \
+        --gitlab-url ${CI_SERVER_URL} \
+        --gitlab-token ${GITLAB_TOKEN} \
+        --config config/ibm_policies.yaml \
+        --slack-config config/slack_config.yaml \
+        --output bob-report.json
+    
+    - echo "✅ Análise concluída!"
+  
+  # Artefatos gerados
+  artifacts:
+    name: "bob-analysis-${CI_MERGE_REQUEST_IID}"
+    paths:
+      - bob-pr-orchestrator/bob-report.json
+      - bob-pr-orchestrator/bob-report.html
+    reports:
+      junit: bob-pr-orchestrator/bob-report.xml
+    expire_in: 30 days
+    when: always
+  
+  # Permite falha se configurado (não bloqueia pipeline)
+  # Mude para false para bloquear PRs com erros críticos
+  allow_failure: false
+  
+  # Timeout
+  timeout: 10 minutes
+  
+  # Retry em caso de falha temporária
+  retry:
+    max: 2
+    when:
+      - runner_system_failure
+      - stuck_or_timeout_failure
+
+# Job: Análise de segurança adicional
+security-scan:
+  stage: bob-analysis
+  image: ${BOB_IMAGE}
+  
+  only:
+    - merge_requests
+  
+  before_script:
+    - pip install bandit semgrep
+  
+  script:
+    - echo "🔒 Executando scan de segurança adicional..."
+    
+    # Bandit para Python
+    - |
+      if find . -name "*.py" -not -path "./venv/*" | grep -q .; then
+        bandit -r . -f json -o bandit-report.json || true
+      fi
+    
+    # Semgrep para múltiplas linguagens
+    - semgrep --config=auto --json --output=semgrep-report.json . || true
+    
+    - echo "✅ Scan de segurança concluído!"
+  
+  artifacts:
+    paths:
+      - bandit-report.json
+      - semgrep-report.json
+    expire_in: 30 days
+    when: always
+  
+  allow_failure: true
+
+# Job: Notificação de sucesso
+notify-success:
+  stage: .post
+  image: curlimages/curl:latest
+  
+  only:
+    - merge_requests
+  
+  when: on_success
+  
+  script:
+    - |
+      if [ -n "${SLACK_WEBHOOK_URL}" ]; then
+        curl -X POST ${SLACK_WEBHOOK_URL} \
+          -H 'Content-Type: application/json' \
+          -d "{
+            \"text\": \"✅ Pipeline do PR #${CI_MERGE_REQUEST_IID} concluído com sucesso!\",
+            \"blocks\": [
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*✅ Pipeline Concluído*\n\nPR #${CI_MERGE_REQUEST_IID}: ${CI_MERGE_REQUEST_TITLE}\n\n<${CI_PIPELINE_URL}|Ver Pipeline>\"
+                }
+              }
+            ]
+          }"
+      fi
+
+# Job: Notificação de falha
+notify-failure:
+  stage: .post
+  image: curlimages/curl:latest
+  
+  only:
+    - merge_requests
+  
+  when: on_failure
+  
+  script:
+    - |
+      if [ -n "${SLACK_WEBHOOK_URL}" ]; then
+        curl -X POST ${SLACK_WEBHOOK_URL} \
+          -H 'Content-Type: application/json' \
+          -d "{
+            \"text\": \"❌ Pipeline do PR #${CI_MERGE_REQUEST_IID} falhou!\",
+            \"blocks\": [
+              {
+                \"type\": \"section\",
+                \"text\": {
+                  \"type\": \"mrkdwn\",
+                  \"text\": \"*❌ Pipeline Falhou*\n\nPR #${CI_MERGE_REQUEST_IID}: ${CI_MERGE_REQUEST_TITLE}\n\n<${CI_PIPELINE_URL}|Ver Pipeline>\"
+                }
+              }
+            ]
+          }"
+      fi
+
+# Configurações adicionais para branches específicas
+.production-rules:
+  only:
+    - main
+    - master
+    - production
+
+# Job de exemplo para testes (customize conforme necessário)
+unit-tests:
+  stage: test
+  image: ${BOB_IMAGE}
+  
+  only:
+    - merge_requests
+    - main
+    - develop
+  
+  before_script:
+    - pip install pytest pytest-cov
+  
+  script:
+    - echo "🧪 Executando testes unitários..."
+    - pytest tests/ --cov=bob --cov-report=xml --cov-report=html
+  
+  artifacts:
+    paths:
+      - htmlcov/
+      - coverage.xml
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage.xml
+    expire_in: 30 days
+  
+  coverage: '/TOTAL.*\s+(\d+%)$/'
+  
+  allow_failure: false
+
+# Made with Bob
