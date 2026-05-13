@@ -1,0 +1,555 @@
+{
+  "summary": {
+    "total_files": 2,
+    "total_lines": 264,
+    "total_issues": 60,
+    "critical": 8,
+    "high": 0,
+    "medium": 3,
+    "low": 49,
+    "info": 0
+  },
+  "issues": [
+    {
+      "file_path": "../bob-test-project/test_with_bob.py",
+      "line_number": 18,
+      "severity": "MEDIUM",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'main' muito longa (74 linhas)",
+      "description": "Fun\u00e7\u00f5es devem ter no m\u00e1ximo 30 linhas",
+      "suggestion": "Considere dividir esta fun\u00e7\u00e3o em fun\u00e7\u00f5es menores"
+    },
+    {
+      "file_path": "../bob-test-project/test_with_bob.py",
+      "line_number": 18,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'main' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/test_with_bob.py",
+      "line_number": 18,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'main' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/test_with_bob.py",
+      "line_number": 14,
+      "severity": "LOW",
+      "category": "style",
+      "message": "Import fora da se\u00e7\u00e3o de imports",
+      "description": "Todos os imports devem estar no in\u00edcio do arquivo",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/test_with_bob.py",
+      "line_number": 15,
+      "severity": "LOW",
+      "category": "style",
+      "message": "Import fora da se\u00e7\u00e3o de imports",
+      "description": "Todos os imports devem estar no in\u00edcio do arquivo",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/test_with_bob.py",
+      "line_number": 16,
+      "severity": "LOW",
+      "category": "style",
+      "message": "Import fora da se\u00e7\u00e3o de imports",
+      "description": "Todos os imports devem estar no in\u00edcio do arquivo",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "MEDIUM",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'process_user_data' muito longa (53 linhas)",
+      "description": "Fun\u00e7\u00f5es devem ter no m\u00e1ximo 30 linhas",
+      "suggestion": "Considere dividir esta fun\u00e7\u00e3o em fun\u00e7\u00f5es menores"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 78,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'calculate_total' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 86,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'send_notification' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 92,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'load_config' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 102,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'process_order' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 108,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'debug_function' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 115,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'validate_input' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 140,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'get_user_by_email' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 147,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'save_to_database' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 150,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'send_welcome_email' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 153,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'create_audit_log' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 156,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'update_cache' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 159,
+      "severity": "LOW",
+      "category": "documentation",
+      "message": "Fun\u00e7\u00e3o 'execute_query' sem docstring",
+      "description": "Fun\u00e7\u00f5es e classes p\u00fablicas devem ter docstrings",
+      "suggestion": "Adicione uma docstring explicando o prop\u00f3sito e par\u00e2metros"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'user_id' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'name' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'email' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'phone' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'address' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'city' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'state' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'zip_code' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'country' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 22,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'process_user_data' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 78,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'items' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 78,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'calculate_total' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 92,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'load_config' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 102,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'order_id' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 102,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'process_order' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 108,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'debug_function' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 115,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'data' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 115,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'validate_input' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 140,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'email' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 140,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'get_user_by_email' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 147,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'data' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 147,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'save_to_database' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 150,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'email' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 150,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'send_welcome_email' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 153,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'user_id' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 153,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'action' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 153,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'create_audit_log' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 156,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'user_id' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 156,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'data' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 156,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'update_cache' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 159,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Par\u00e2metro 'query' sem type hint",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 159,
+      "severity": "LOW",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'execute_query' sem type hint de retorno",
+      "description": "",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 115,
+      "severity": "MEDIUM",
+      "category": "code_quality",
+      "message": "Fun\u00e7\u00e3o 'validate_input' muito complexa (complexidade: 11)",
+      "description": "Complexidade ciclom\u00e1tica deve ser no m\u00e1ximo 10",
+      "suggestion": "Simplifique a l\u00f3gica ou divida em fun\u00e7\u00f5es menores"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 13,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "Senha hardcoded detectada",
+      "description": "Padr\u00e3o de seguran\u00e7a violado: (?i)(password|passwd|pwd)\\s*=\\s*['\"][^'\"]+['\"]",
+      "suggestion": "Remova a credencial/secret e use um gerenciador de secrets aprovado"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 17,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "Senha hardcoded detectada",
+      "description": "Padr\u00e3o de seguran\u00e7a violado: (?i)(password|passwd|pwd)\\s*=\\s*['\"][^'\"]+['\"]",
+      "suggestion": "Remova a credencial/secret e use um gerenciador de secrets aprovado"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 14,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "API Key hardcoded detectada",
+      "description": "Padr\u00e3o de seguran\u00e7a violado: (?i)(api[_-]?key|apikey)\\s*=\\s*['\"][^'\"]+['\"]",
+      "suggestion": "Remova a credencial/secret e use um gerenciador de secrets aprovado"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 18,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "Secret/Token hardcoded detectado",
+      "description": "Padr\u00e3o de seguran\u00e7a violado: (?i)(secret|token)\\s*=\\s*['\"][^'\"]+['\"]",
+      "suggestion": "Remova a credencial/secret e use um gerenciador de secrets aprovado"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 11,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "AWS Access Key ID detectada",
+      "description": "Padr\u00e3o de seguran\u00e7a violado: AKIA[0-9A-Z]{16}",
+      "suggestion": "Remova a credencial/secret e use um gerenciador de secrets aprovado"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 11,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "AWS Access Key ID detectada",
+      "description": "Credencial AWS exposta no c\u00f3digo",
+      "suggestion": "Use AWS Secrets Manager ou vari\u00e1veis de ambiente"
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 12,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "AWS Secret Access Key detectada",
+      "description": "Secret key AWS exposta no c\u00f3digo",
+      "suggestion": null
+    },
+    {
+      "file_path": "../bob-test-project/app.py",
+      "line_number": 18,
+      "severity": "CRITICAL",
+      "category": "security",
+      "message": "Generic Token detectado",
+      "description": "Token/API Key exposto no c\u00f3digo",
+      "suggestion": "Use secrets manager ou vari\u00e1veis de ambiente"
+    }
+  ],
+  "should_block": true
+}
