@@ -5,7 +5,7 @@ Testa os analisadores sem precisar de GitLab
 """
 
 import sys
-import os
+import os   
 import yaml
 import json
 from pathlib import Path
